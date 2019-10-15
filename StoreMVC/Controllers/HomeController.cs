@@ -11,6 +11,7 @@ namespace StoreMVC.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //comment
             return View();
         }
     }
