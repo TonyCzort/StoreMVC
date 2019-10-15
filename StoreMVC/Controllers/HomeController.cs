@@ -12,6 +12,7 @@ namespace StoreMVC.Controllers
         public ActionResult Index()
         {
             //comment
+            //login test
             return View();
         }
     }
