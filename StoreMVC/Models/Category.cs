@@ -14,6 +14,8 @@ namespace StoreMVC.Models
         public string CategoryDescription { get; set; }
         public string CategoryPcitureName { get; set; }
 
+
+        //do kategorii wiele różnych
         public virtual ICollection<Equipment> AllEquipment { get; set; }
     }
 }
