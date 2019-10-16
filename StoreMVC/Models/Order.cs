@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,10 +10,20 @@ namespace StoreMVC.Models
     {
 
         public int OrderId { get; set; }
+        [Required(ErrorMessage = "Write name")]
+        [StringLength(50)]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Write surname")]
+        [StringLength(50)]
         public string Surname { get; set; }
+        [Required(ErrorMessage = "Write Street Name")]
+        [StringLength(100)]
         public string StreetName { get; set; }
+        [Required(ErrorMessage = "Write city")]
+        [StringLength(100)]
         public string City { get; set; }
+        [Required(ErrorMessage = "Write postal code")]
+        [StringLength(6)]
         public string PostalCode { get; set; }
         public string TelephoneNumber { get; set; }
         public string Email { get; set; }
