@@ -23,6 +23,7 @@ namespace StoreMVC.Models
         public decimal EquipmentPrice { get; set; }
         public bool Bestseller { get; set; }
         public bool Hidden { get; set; }
+        public string ShortDescription { get; set; }
 
         //wlasciwosc nawigacyjna
         public virtual Category Category { get; set; }

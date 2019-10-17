@@ -1,7 +1,9 @@
-﻿using StoreMVC.Models;
+﻿using StoreMVC.Migrations;
+using StoreMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 
@@ -13,15 +15,11 @@ namespace StoreMVC.DAL
 
     //drop create database always - baza usuwana i tworzona zawsze
     //drop create database if model changes - baza kasowana i tworzona przy zmianach modelu
-    public class EquipmentInitializer : DropCreateDatabaseAlways<EquipmentContext>
+    public class EquipmentInitializer : MigrateDatabaseToLatestVersion<EquipmentContext, Configuration>
     {
-        protected override void Seed(EquipmentContext context)
-        {
-            SeedEquimpentData(context);
-            base.Seed(context);
-        }
+        
 
-        private void SeedEquimpentData(EquipmentContext context)
+        public static void SeedEquimpentData(EquipmentContext context)
         {
             var categories = new List<Category>
             {
@@ -34,7 +32,7 @@ namespace StoreMVC.DAL
                 new Category() { CategoryId=7, CategoryName = "Socks", CategoryPcitureName = "sock.png", CategoryDescription ="socks"},
             };
 
-            categories.ForEach(c => context.Category.Add(c));
+            categories.ForEach(c => context.Category.AddOrUpdate(c));
             context.SaveChanges();
 
             var equipment = new List<Equipment>
@@ -52,7 +50,7 @@ namespace StoreMVC.DAL
                     PictureName ="moltenball4.png", DateAdded = DateTime.Now, Description ="opis pileczki, 7 rozmiar itp" },
 
             };
-            equipment.ForEach(e => context.AllEquipment.Add(e));
+            equipment.ForEach(e => context.AllEquipment.AddOrUpdate(e));
             context.SaveChanges();
             
         }
