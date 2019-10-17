@@ -16,6 +16,13 @@ namespace StoreMVC.DAL
         {
 
         }
+
+        //wywoalanie initializera
+        static EquipmentContext()
+        {
+            Database.SetInitializer<EquipmentContext>(new EquipmentInitializer());
+        }
+
         public DbSet<Equipment> AllEquipment { get; set; } //DbSet to tabela
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Orders { get; set; }

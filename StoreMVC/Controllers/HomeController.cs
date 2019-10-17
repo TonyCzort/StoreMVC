@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StoreMVC.DAL;
+using StoreMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +10,12 @@ namespace StoreMVC.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        private EquipmentContext db = new EquipmentContext();
+        
         public ActionResult Index()
         {
-            //comment
-            //login test
+            var categoryList = db.Category.ToList();
+
             return View();
         }
     }
