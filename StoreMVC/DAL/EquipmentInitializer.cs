@@ -29,7 +29,7 @@ namespace StoreMVC.DAL
                 new Category() { CategoryId=4, CategoryName = "Tshirts", CategoryPcitureName = "tshirt.png", CategoryDescription ="tshirts"},
                 new Category() { CategoryId=5, CategoryName = "Shorts", CategoryPcitureName = "shorts.png", CategoryDescription ="shorts"},
                 new Category() { CategoryId=6, CategoryName = "Bagpacks", CategoryPcitureName = "backpack.png", CategoryDescription ="backpacks"},
-                new Category() { CategoryId=7, CategoryName = "Socks", CategoryPcitureName = "sock.png", CategoryDescription ="socks"},
+                //new Category() { CategoryId=7, CategoryName = "Socks", CategoryPcitureName = "sock.png", CategoryDescription ="socks"},
             };
 
             categories.ForEach(c => context.Category.AddOrUpdate(c));
