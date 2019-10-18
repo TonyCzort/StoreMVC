@@ -50,6 +50,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0-preview1-19506-01\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.1.8.2\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -99,7 +108,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
+    <Content Include="Content\Images\ball.png" />
     <Content Include="Content\Images\baner.png" />
+    <Content Include="Content\Images\Banner.png" />
     <Content Include="Content\Images\bestseller.png" />
     <Content Include="Content\Images\dommaly.png" />
     <Content Include="Content\Images\footer-cd.png" />
@@ -113,8 +124,10 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\new.png" />
     <Content Include="Content\Images\searchlogo.png" />
+    <Content Include="Content\Images\storelogo.png" />
     <Content Include="Content\Images\upload.png" />
     <Content Include="Content\Kategorie\aspnet.png" />
+    <Content Include="Content\Kategorie\category.png" />
     <Content Include="Content\Kategorie\csharp.png" />
     <Content Include="Content\Kategorie\css.png" />
     <Content Include="Content\Kategorie\html.png" />
@@ -151,6 +164,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\EquipmentContext.cs" />
     <Compile Include="DAL\EquipmentInitializer.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +193,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\SocialMedia.cshtml" />
+    <Content Include="Views\Home\Reviews.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\TermsOfUse.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
