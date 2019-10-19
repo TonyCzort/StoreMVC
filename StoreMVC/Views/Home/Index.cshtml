@@ -1,137 +1,73 @@
-﻿
-@{ 
+﻿@model StoreMVC.ViewModels.HomeViewModel
+@using StoreMVC.Infrastructure
+
+@{
     ViewBag.Title = "Bball Store";
 }
 
-    <nav class="kategorieHorizontal">
-        <ul>
+<nav class="kategorieHorizontal">
+    <ul>
+        @foreach (var category in Model.Categories)
+        {
             <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    Balls
+                <a href="@Url.Action("List", "Equipment", new { categoryName = category.CategoryName.ToLower()})"
+                   style="background-image: url(@Url.CategoryPicturePath(category.CategoryPictureName)); ">
+                    @category.CategoryName
                 </a>
             </li>
-            <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    Shoes & Socks
-                </a>
-            </li>
-            <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    Jerseys
-                </a>
-            </li>
-            <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    T-shirts
-                </a>
-            </li>
-            <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    Shorts
-                </a>
-            </li>
-            <li>
-                <a href="link" style="background-image: url(../Content/Kategorie/category.png); ">
-                    Bagpacks
-                </a>
-            </li>
+        }
 
-        </ul>
-        <a href="link">
-            <img id="baner" src="../Content/Images/Banner.png" class="center" />
-        </a>
-    </nav>
+    </ul>
+    <a href="link">
+        <img id="baner" src="../Content/Images/Banner.png" class="center" />
+    </a>
+</nav>
+
+<section>
+    <ul class="KursyTrzyKolumny duzaListaKursy">
+        @foreach (var bestseller in Model.Bestsellers)
+        {
+            <li>
+                <article>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToBasket", "Basket", new { id =bestseller.EquipmentId})">
+                        <img src="../Content/Images/koszyk.png" />
+                    </a>
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details", "Equipment", new { id = bestseller.EquipmentId})">
+                        <div class="bestsellerFlag"></div>
+                        <img class="kurs" src="@Url.PicturePath(bestseller.PictureName)" />
+                        <h1>
+                            @bestseller.Title - @bestseller.Manufacturer
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</section>
+
+
 
     <section>
         <ul class="KursyTrzyKolumny duzaListaKursy">
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekcss.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekhtml.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekjquery.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
+            @foreach (var latest in Model.Latest)
+            {
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="@Url.Action("AddToBasket", "Basket", new { id =latest.EquipmentId})">
+                            <img src="../Content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="@Url.Action("Details", "Equipment", new { id = latest.EquipmentId})">
+                            <div class="newFlag"></div>
+                            <img class="kurs" src="@Url.PicturePath(latest.PictureName)" />
+                            <h1>
+                                @latest.Title - @latest.Manufacturer
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            }
+            </ul>
     </section>
-    <section>
-        <ul class="KursyTrzyKolumny duzaListaKursy">
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekcsharp.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekmvc.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
-   
+
+
+

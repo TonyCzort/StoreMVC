@@ -23,13 +23,13 @@ namespace StoreMVC.DAL
         {
             var categories = new List<Category>
             {
-                new Category() { CategoryId=1, CategoryName = "Balls", CategoryPcitureName = "basketball.png", CategoryDescription ="basketballs"},
-                new Category() { CategoryId=2, CategoryName = "Shoes", CategoryPcitureName = "shoe.png", CategoryDescription ="all types of shoes"},
-                new Category() { CategoryId=3, CategoryName = "Jerseys", CategoryPcitureName = "jersey.png", CategoryDescription ="jesrseys"},
-                new Category() { CategoryId=4, CategoryName = "Tshirts", CategoryPcitureName = "tshirt.png", CategoryDescription ="tshirts"},
-                new Category() { CategoryId=5, CategoryName = "Shorts", CategoryPcitureName = "shorts.png", CategoryDescription ="shorts"},
-                new Category() { CategoryId=6, CategoryName = "Bagpacks", CategoryPcitureName = "backpack.png", CategoryDescription ="backpacks"},
-                //new Category() { CategoryId=7, CategoryName = "Socks", CategoryPcitureName = "sock.png", CategoryDescription ="socks"},
+                new Category() { CategoryId=1, CategoryName = "Balls", CategoryPictureName = "basketball.png", CategoryDescription ="basketballs"},
+                new Category() { CategoryId=2, CategoryName = "Shoes and Socks", CategoryPictureName = "shoe.png", CategoryDescription ="all types of shoes"},
+                new Category() { CategoryId=3, CategoryName = "Jerseys", CategoryPictureName = "jersey.png", CategoryDescription ="jesrseys"},
+                new Category() { CategoryId=4, CategoryName = "Tshirts", CategoryPictureName = "tshirt.png", CategoryDescription ="tshirts"},
+                new Category() { CategoryId=5, CategoryName = "Shorts", CategoryPictureName = "shorts.png", CategoryDescription ="shorts"},
+                new Category() { CategoryId=6, CategoryName = "Bagpacks", CategoryPictureName = "backpack.png", CategoryDescription ="backpacks"},
+                //new Category() { CategoryId=7, CategoryName = "Socksgg", CategoryPcitureName = "sock.png", CategoryDescription ="socks"},
             };
 
             categories.ForEach(c => context.Category.AddOrUpdate(c));

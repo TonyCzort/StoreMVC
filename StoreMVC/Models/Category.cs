@@ -12,7 +12,7 @@ namespace StoreMVC.Models
         public string CategoryName { get; set; }
         [Required(ErrorMessage = "Write category description")]
         public string CategoryDescription { get; set; }
-        public string CategoryPcitureName { get; set; }
+        public string CategoryPictureName { get; set; }
 
 
         //do kategorii wiele różnych
