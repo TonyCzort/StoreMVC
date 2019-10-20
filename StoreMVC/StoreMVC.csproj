@@ -252,6 +252,7 @@
     <Content Include="Views\Basket\AddToBasket.cshtml" />
     <Content Include="Views\Equipment\_CategoryMenu.cshtml" />
     <Content Include="Views\Equipment\_EquipmentList.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

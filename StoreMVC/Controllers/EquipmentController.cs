@@ -29,7 +29,8 @@ namespace StoreMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var equipment = db.AllEquipment.Find(id);
+            return View(equipment);
         }
 
         //akcja wywołana tylko z poziomu innej akcji
