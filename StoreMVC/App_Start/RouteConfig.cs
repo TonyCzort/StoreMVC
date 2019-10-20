@@ -13,6 +13,12 @@ namespace StoreMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "EquipmentList",
+                url: "Category/{categoryName}",
+                defaults: new { controller = "Equipment", action = "List" });
+
             routes.MapRoute(
                 name: "StaticSites",
                 url: "sites/{name}.html",

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<StoreMVC.Models.Equipment>
+@using StoreMVC.Infrastructure
+
+
+
+    <ul class="KursyTrzyKolumny KursCena">
+        @foreach (var equipment in Model)
+        {
+            <li>
+                <article>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToBasket", "Basket", new { id = equipment.EquipmentId})">
+                        <img src="@Url.Content("../Content/Images/koszyk.png")" />
+                    </a>
+                    @if (equipment.Bestseller)
+                    {
+                        <div class="bestsellerFlag"></div>
+                    }
+
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details", "Equipment", new { id = equipment.EquipmentId})">
+                        <img class="kurs" src="@Url.PicturePath(equipment.PictureName)" />
+                        <h1>
+                            @equipment.Manufacturer - @equipment.Title
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+

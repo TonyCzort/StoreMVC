@@ -141,12 +141,18 @@
     <Content Include="Content\Images\tshirt.png" />
     <Content Include="Content\Images\upload.png" />
     <Content Include="Content\Kategorie\aspnet.png" />
+    <Content Include="Content\Kategorie\backpack.png" />
+    <Content Include="Content\Kategorie\basketball.png" />
     <Content Include="Content\Kategorie\category.png" />
     <Content Include="Content\Kategorie\csharp.png" />
     <Content Include="Content\Kategorie\css.png" />
     <Content Include="Content\Kategorie\html.png" />
     <Content Include="Content\Kategorie\javascript.png" />
+    <Content Include="Content\Kategorie\jersey.png" />
     <Content Include="Content\Kategorie\jquery.png" />
+    <Content Include="Content\Kategorie\shoe.png" />
+    <Content Include="Content\Kategorie\shorts.png" />
+    <Content Include="Content\Kategorie\tshirt.png" />
     <Content Include="Content\Kategorie\xml.png" />
     <Content Include="Content\Kursy\moltenball.png" />
     <Content Include="Content\Kursy\moltenball2.png" />
@@ -206,6 +212,18 @@
     <Compile Include="Migrations\201910191822232_tests.designer.cs">
       <DependentUpon>201910191822232_tests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910191916595_tests2.cs" />
+    <Compile Include="Migrations\201910191916595_tests2.designer.cs">
+      <DependentUpon>201910191916595_tests2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201028521_widokpokliknieciu.cs" />
+    <Compile Include="Migrations\201910201028521_widokpokliknieciu.designer.cs">
+      <DependentUpon>201910201028521_widokpokliknieciu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201156027_testy.cs" />
+    <Compile Include="Migrations\201910201156027_testy.designer.cs">
+      <DependentUpon>201910201156027_testy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -232,6 +250,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Equipment\List.cshtml" />
     <Content Include="Views\Basket\AddToBasket.cshtml" />
+    <Content Include="Views\Equipment\_CategoryMenu.cshtml" />
+    <Content Include="Views\Equipment\_EquipmentList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,6 +275,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910191822232_tests.resx">
       <DependentUpon>201910191822232_tests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910191916595_tests2.resx">
+      <DependentUpon>201910191916595_tests2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201028521_widokpokliknieciu.resx">
+      <DependentUpon>201910201028521_widokpokliknieciu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201156027_testy.resx">
+      <DependentUpon>201910201156027_testy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

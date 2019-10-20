@@ -18,10 +18,10 @@ namespace StoreMVC.Infrastructure
             return categoryPictureTilde;
         }
 
-        public static string PicturePath(this UrlHelper helper, string pictureName)
+        public static string PicturePath(this UrlHelper helper, string PictureName)
         {
             var PictureFolder = AppConfig.PictureFolderTilde;
-            var PictureLocation = Path.Combine(PictureFolder, pictureName);
+            var PictureLocation = Path.Combine(PictureFolder, PictureName);
             var categoryPictureTilde = helper.Content(PictureLocation);
 
             return categoryPictureTilde;

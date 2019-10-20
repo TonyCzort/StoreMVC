@@ -1,0 +1,16 @@
+﻿@model IEnumerable<StoreMVC.Models.Category>
+@using StoreMVC.Infrastructure
+
+<nav class="KategorieVertical">
+    <ul>
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="@Url.Action("List", "Equipment", new {categoryName = category.CategoryName.ToString()})"
+                   style="background-image: url(@Url.CategoryPicturePath(category.CategoryPictureName)); ">
+                    @category.CategoryName
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

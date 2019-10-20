@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreMVC.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,10 @@ namespace StoreMVC.Controllers
 {
     public class EquipmentController : Controller
     {
+
+        
+        private EquipmentContext db = new EquipmentContext();
+
         // GET: Equipment
         public ActionResult Index()
         {
@@ -16,12 +21,23 @@ namespace StoreMVC.Controllers
 
         public ActionResult List(string categoryName)
         {
+           // var category = db.Category.Include("AllEquipment").Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
+            var category = db.Category.Include("AllEquipment").Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
+            var equipment = category.AllEquipment.ToList();
+            return View(equipment);
+        }
+
+        public ActionResult Details(int id)
+        {
             return View();
         }
 
-        public ActionResult Details(string id)
+        //akcja wywołana tylko z poziomu innej akcji
+        [ChildActionOnly]
+        public ActionResult CategoryMenu()
         {
-            return View();
+            var categories = db.Category.ToList();
+            return PartialView("_CategoryMenu", categories);
         }
     }
 }
