@@ -32,11 +32,13 @@ namespace StoreMVC.Controllers
             var equipment = db.AllEquipment.Find(id);
             return View(equipment);
         }
-
+        //trzyma dane, nie odswieza z bazy zawsze
+        [OutputCache(Duration = 60000)]
         //akcja wywołana tylko z poziomu innej akcji
         [ChildActionOnly]
         public ActionResult CategoryMenu()
         {
+            
             var categories = db.Category.ToList();
             return PartialView("_CategoryMenu", categories);
         }

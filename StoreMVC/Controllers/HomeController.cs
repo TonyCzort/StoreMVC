@@ -1,4 +1,6 @@
-﻿using StoreMVC.DAL;
+﻿
+using StoreMVC.DAL;
+using StoreMVC.Infrastructure;
 using StoreMVC.Models;
 using StoreMVC.ViewModels;
 using System;
@@ -15,11 +17,47 @@ namespace StoreMVC.Controllers
 
         public ActionResult Index()
         {
-            var categories = db.Category.ToList();
+            
+            ICacheProvider cache = new DefaultCacheProvider();
 
-            var latest = db.AllEquipment.Where(a => !a.Hidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+            List<Category> categories;
+            if (cache.IsSet(Const.CategoriesCacheKey))
+            {
+                categories = cache.Get(Const.CategoriesCacheKey) as List<Category>;
+            }
+            else
+            {
+                //unikalne zawsze, dobiera inne
+                categories = db.Category.ToList();
+               cache.Set(Const.CategoriesCacheKey, categories, 60);
+            }
+            
+            List<Equipment> latest;
+            if (cache.IsSet(Const.LatestCacheKey))
+            {
+                latest = cache.Get(Const.LatestCacheKey) as List<Equipment>;
+            }
+            else
+            {
+                latest = db.AllEquipment.Where(a => !a.Hidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
+                cache.Set(Const.LatestCacheKey, latest, 60);
+            }
+
+            List<Equipment> bestseller;
+            if (cache.IsSet(Const.BestsellerCacheKey))
+            {
+                bestseller = cache.Get(Const.BestsellerCacheKey) as List<Equipment>;
+            }
+            else
+            {
+                //uniqe, always selecting different objects
+                bestseller = db.AllEquipment.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3).ToList();
+                cache.Set(Const.BestsellerCacheKey, bestseller, 60);
+            }
+
+
             //unikalne zawsze, dobiera inne
-            var bestseller = db.AllEquipment.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3).ToList();
+             bestseller = db.AllEquipment.Where(a => !a.Hidden && a.Bestseller).OrderBy(a => Guid.NewGuid()).Take(3).ToList();
 
             var vm = new HomeViewModel()
             {
