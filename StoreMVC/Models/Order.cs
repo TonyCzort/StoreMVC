@@ -32,7 +32,7 @@ namespace StoreMVC.Models
         public OrderState OrderState { get; set; } //stan zamowienia enum
         public decimal Value { get; set; }
 
-        List<OrderItem> OrderItems { get; set; } //pozycjezamowienia
+        public List<OrderItem> OrderItems { get; set; } //pozycjezamowienia
     }
 
     public enum OrderState

@@ -10,5 +10,6 @@ namespace StoreMVC.Infrastructure
         public const string LatestCacheKey = "LatestCacheKey";
         public const string BestsellerCacheKey = "BestsellerCacheKey";
         public const string CategoriesCacheKey = "CategoriesCacheKey";
+        public const string BasketSessionKey = "BasketSessionKey";
     }
 }
