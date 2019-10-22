@@ -103,7 +103,7 @@ namespace StoreMVC.Infrastructure
             // newOrder.userId = userId;
             db.Orders.Add(newOrder);
             if (newOrder.OrderItems == null)
-                            newOrder.OrderItems = new List<OrderItem>();
+                newOrder.OrderItems = new List<OrderItem>();
             decimal basketValue = 0;
             foreach (var basketElement in basket)
             {

@@ -1,0 +1,98 @@
+﻿@model StoreMVC.ViewModels.BasketViewModel
+@using StoreMVC.Infrastructure
+
+@{
+    ViewBag.Title = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="ListaKategoriZawartosc">
+    @Html.Action("CategoryMenu", "Equipment")
+    <div id="KategorieListPrawaSekcja">
+        <div id="Breadcrumb">
+            <img src="../Content/Images/dommaly.png" />
+            <a href="link">
+                @Html.MvcSiteMap().SiteMapPath()
+            </a>
+        </div>
+        <section class="SekcjaKoszyk">
+            <div class="SekcjaHeader" style="margin-bottom: 0px;">
+                <h1>Twój koszyk</h1>
+            </div>
+            <table id="koszykTabela">
+                @foreach (var basketPosition in Model.BasketPositions)
+
+                {
+                    <tr id="basket-row-@basketPosition.Equipment.EquipmentId">
+                        <td>
+                            <a href="@Url.Action("Details", "Equipment", new {id = basketPosition.Equipment.EquipmentId })">
+                                <img src="@Url.Content("~/Content/Kursy/" + basketPosition.Equipment.PictureName)" />
+                            </a>
+                        </td>
+                        <td><a href="@Url.Action("Details", "Equipment", new {id = basketPosition.Equipment.EquipmentId })">@basketPosition.Equipment.Title</a></td>
+                        <td>Ilość: <span id="basket-quantity-position-@basketPosition.Equipment.EquipmentId">@basketPosition.Quantity</span></td>
+                        <td>@String.Format("{0:0,##}", basketPosition.Value) zł</td>
+                        <td><a class="deleteEquipment" data-id="@basketPosition.Equipment.EquipmentId" href="#">Usuń</a></td>
+                    </tr>
+                }
+
+                <tr id="basket-empty-message" @if (Model.BasketPositions != null && Model.BasketPositions.Count > 0) { <text> class="hidden" </text> }>
+                    <td>Your basket is empty. Would youl like to add something?</td>
+                </tr>
+            </table>
+            <div id="FullPrice" style="">
+                All to pay: <span id="full-price-value">@String.Format("{0:0.##}", Model.FullPrice)</span> zł
+            </div>
+            <div class="SekcjaPrzyciski">
+                <a class="PrzyciskLink" href="link">Kontynuuj zakupy</a>
+                @if (Model.FullPrice > 0)
+                {
+                    <a class="PrzyciskLink" id="basket-button-pay" href="@Url.Action("Pay", "Basket")">Pay boy!</a>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+@section Scripts
+{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryAndJqueryUI")
+
+    <script type="text/javascript">
+        $(function () {
+            $(".deleteEquipment").click(function () {
+
+                var recordToDelete = $this.attr("data-id");
+
+                if (recordToDelete != '') {
+                    $.post("/Basket/DeleteFromBasket", { "equipmentId": recordToDelete },
+                        function (response) {
+                            if (response.RemovePositionQuantity == 0) {
+
+                                $('#basket-row-' + response.DeletingPositionId).fadeOut('slow', function () {
+                                    if (response.BasketPositionQuantity == 0) {
+                                        $("#basket-empty-message").removeClass("hidden");
+                                    }
+                                });
+                            }
+                            else {
+                                $('#basket-quantity-position-' + response.DeletingPositionId).text(response.RemovePositionQuantity);
+                            }
+
+                            if (response.BasketPositionQuantity == 0) {
+                                $('#basket-button-pay').addClass('hidden');
+                                $('#FullPrice').addClass('invisible');
+                            }
+                            $('#full-price-value').text(response.BasketFullPrice);
+                            $('#basket-header-quantity').text(response.BasketPositionQuantity);
+                        }); 
+                    return false;
+                }
+            
+                });
+            });
+
+
+    </script>
+
+}
+
